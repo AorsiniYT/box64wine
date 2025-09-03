@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euxo pipefaelse
+set -euxo pipefail
   echo "Compilando e instalando Box86..."
   if [ -d "box86/build" ] && [ -f "box86/build/box86" ]; then
     echo "Box86 ya compilado, instalando..."
