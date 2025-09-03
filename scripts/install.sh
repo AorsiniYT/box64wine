@@ -67,7 +67,7 @@ echo "Configurando wrappers para Wine con Box..."
 bash scripts/wrap-wine.sh
 
 echo "Instalando dependencias adicionales..."
-sudo apt install -y winetricks
+# winetricks ya instalado en install-wine.sh
 
 echo "Inicializando Wine..."
 wine64 wineboot
