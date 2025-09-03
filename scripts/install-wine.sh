@@ -38,7 +38,8 @@ dpkg-deb -x ${DEB_A1} wine-installer
 dpkg-deb -x ${DEB_A2} wine-installer
 dpkg-deb -x ${DEB_B1} wine-installer
 echo -e "Installing wine . . ."
-sudo mv wine-installer/opt/wine* /usr/local/wine
+sudo rm -rf /usr/local/wine
+sudo mv wine-installer/opt/wine-stable /usr/local/wine
 
 # Clean up
 rm -rf ${DEB_A1} ${DEB_A2} ${DEB_B1}
