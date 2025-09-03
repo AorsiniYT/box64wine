@@ -16,7 +16,7 @@ set -euxo pipefail
     sudo make install DESTDIR=/
     cd ../..
   fi
-fit de instalación nativa para Wine con Box86/Box64 en ARM64
+echo 'Fin de instalación nativa para Wine con Box86/Box64 en ARM64'
 # Instala Wine, Box, wrappers, y prepara para The Forest
 
 echo "Verificando si Box86 ya está instalado..."
