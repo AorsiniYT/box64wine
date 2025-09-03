@@ -73,6 +73,6 @@ echo "Inicializando Wine..."
 wine64 wineboot
 
 echo "Instalando VCRun2019..."
-xvfb-run winetricks -q vcrun2019
+xvfb-run winetricks vcrun2019
 
 echo "Instalación de Wine con Box completada. Ahora puedes usar wine o wine64 para ejecutar aplicaciones Windows."
