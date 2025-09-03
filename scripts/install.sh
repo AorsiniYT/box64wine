@@ -1,7 +1,22 @@
 #!/bin/bash
-set -euxo pipefail
-
-# Script de instalación nativa para Wine con Box86/Box64 en ARM64
+set -euxo pipefaelse
+  echo "Compilando e instalando Box86..."
+  if [ -d "box86/build" ] && [ -f "box86/build/box86" ]; then
+    echo "Box86 ya compilado, instalando..."
+    cd box86/build
+    sudo make install DESTDIR=/
+    cd ../..
+  else
+    rm -rf box86
+    git clone https://github.com/ptitSeb/box86
+    mkdir box86/build
+    cd box86/build
+    cmake .. -DRPI4ARM64=1 -DARM_DYNAREC=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    make -j$(nproc)
+    sudo make install DESTDIR=/
+    cd ../..
+  fi
+fit de instalación nativa para Wine con Box86/Box64 en ARM64
 # Instala Wine, Box, wrappers, y prepara para The Forest
 
 echo "Verificando si Box86 ya está instalado..."
@@ -28,14 +43,21 @@ if command -v box64 >/dev/null 2>&1; then
   echo "Box64 ya está instalado. Omitiendo compilación."
 else
   echo "Compilando e instalando Box64..."
-  rm -rf box64
-  git clone https://github.com/ptitSeb/box64
-  mkdir box64/build
-  cd box64/build
-  cmake .. -DRPI4ARM64=1 -DARM_DYNAREC=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
-  make -j$(nproc)
-  sudo make install DESTDIR=/
-  cd ../..
+  if [ -d "box64/build" ] && [ -f "box64/build/box64" ]; then
+    echo "Box64 ya compilado, instalando..."
+    cd box64/build
+    sudo make install DESTDIR=/
+    cd ../..
+  else
+    rm -rf box64
+    git clone https://github.com/ptitSeb/box64
+    mkdir box64/build
+    cd box64/build
+    cmake .. -DRPI4ARM64=1 -DARM_DYNAREC=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    make -j$(nproc)
+    sudo make install DESTDIR=/
+    cd ../..
+  fi
 fi
 
 echo "Instalando Wine..."
