@@ -19,7 +19,7 @@ else
   cd box86/build
   cmake .. -DRPI4ARM64=1 -DARM_DYNAREC=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
   make -j$(nproc)
-  sudo make install DESTDIR=/usr/local
+  sudo make install DESTDIR=/
   cd ../..
 fi
 
@@ -34,7 +34,7 @@ else
   cd box64/build
   cmake .. -DRPI4ARM64=1 -DARM_DYNAREC=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
   make -j$(nproc)
-  sudo make install DESTDIR=/usr/local
+  sudo make install DESTDIR=/
   cd ../..
 fi
 
