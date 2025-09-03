@@ -4,7 +4,7 @@ set -euxo pipefail
 # Install wrapper script for box86 & box64
 sudo cat << EOF > /usr/local/bin/wine
 #!/bin/sh
-WINEPREFIX=~/.wine WINEARCH=win32 box86 /usr/local/wine/bin/wine \$@
+WINEPREFIX=~/.wine64 WINEARCH=win64 box64 /usr/local/wine/bin/wine64 \$@
 EOF
 sudo cat << EOF > /usr/local/bin/wine64
 #!/bin/sh

@@ -71,8 +71,12 @@ echo "Instalando dependencias adicionales..."
 
 echo "Inicializando Wine..."
 wine64 wineboot
+WINEPREFIX=~/.wine64 wine wineboot
 
 echo "Instalando VCRun2019..."
-xvfb-run winetricks vcrun2019
+export DISPLAY=:99
+sudo Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+sleep 2
+WINEPREFIX=~/.wine64 winetricks vcrun2019
 
 echo "Instalación de Wine con Box completada. Ahora puedes usar wine o wine64 para ejecutar aplicaciones Windows."
