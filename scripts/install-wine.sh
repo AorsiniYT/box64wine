@@ -64,8 +64,8 @@ apt-get install -y libasound2-plugins:arm64 libasound2:arm64 libc6:arm64 libcapi
 # These packages are needed for running wine-staging on RPiOS (Credits: chills340)
 apt install libstb0 -y
 cd ~
-wget -r -l1 -np -nd -A "libfaudio0_*~bpo10+1_i386.deb" http://archive.ubuntu.com/ubuntu/pool/universe/f/faudio/ # Download libfaudio i386 no matter its version number
-for deb in libfaudio0_*~bpo10+1_i386.deb; do
+wget -r -l1 -np -nd -A "libfaudio0_*_i386.deb" http://archive.ubuntu.com/ubuntu/pool/universe/f/faudio/ # Download libfaudio i386 no matter its version number
+for deb in libfaudio0_*_i386.deb; do
   dpkg-deb -xv "$deb" libfaudio
 done
 cp -TRv libfaudio/usr/ /usr/
